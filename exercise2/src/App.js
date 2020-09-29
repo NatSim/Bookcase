@@ -3,7 +3,7 @@ import logo from './ntwTeam.jpg';
 import './App.css';
 
 
-
+//Functional Component returning JSX(App component)*JSX elements not html
 function App() {
   return (
     <div className="App">

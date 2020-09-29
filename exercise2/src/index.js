@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App';   //app component js/ object name and path.
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
+ReactDOM.render(      //function call(value=App JSX component)& react.strictmode vaidates the component.
+  <React.StrictMode>  
+    <App />              
   </React.StrictMode>,
   document.getElementById('root')
 );
