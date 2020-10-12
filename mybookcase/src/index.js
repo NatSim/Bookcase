@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
+import React, {Fragment} from 'react'; 
 import ReactDOM from 'react-dom';
-import books from './books.json'; //BookList
+import books from './models/books.json'; //BookList
 
 const formatter = new Intl.NumberFormat('en-GB', {
 style: 'currency',
@@ -11,7 +11,7 @@ const book = books;            //First object in the book array
 const renderList = () => {     
     let list = [];
     for (let i = 0; i < books.length; i++) {          //For loop displaying array of books
-      let { id, volumeInfo: { title, authors, description, imageLinks } } = books[i];
+      let { id, volumeInfo: { title, authors, description, imageLinks } } = books[i]; // book object deconstructed into several variables
       
       list.push(<li id={books[i].id}>{title} - {authors.map(author => (author))}
         {imageLinks && imageLinks.smallThumbnail && <img src={imageLinks.smallThumbnail} />
