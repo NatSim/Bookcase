@@ -1,34 +1,54 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-//import Book from './'
-import data from "./model/books.json";
-import BookList from "./components/BookList";
-//import Header
-import Search from "./components/Search.js";
+import { BrowserRouter, Route } from "react-router-dom";
+import Header from "./Components/Header";
+import Search from "./Components/Search";
+import data from "./Models/books.json";
+import BookList from "./Components/BookList";
 
-const App = (props) => {
-  const [books] = useState(data);
+const App = (props) => {                   //Functional Component JS
+  const [books, setBooks] = useState(data);
+  const [keyword, setKeyword] = useState("");
 
-  const [selectedBook, setSelectBook] = useState("");
+  async function findBooks(value) {
+    const results = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`
+    ).then((res) => res.json());
+    if (!results.error) {
+      setBooks(results.items);
+    }
+  }
+  return (
+    <BrowserRouter>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <React.Fragment>
+            <Header />
+            <Search
+              findBooks={findBooks}
+              keyword={keyword}
+              setKeyword={setKeyword}
+            />
+            <BookList books={books} addBook={addBook} />
+          </React.Fragment>
+        )}
+      />
+      <Route path="/bookcase" />
+    </BrowserRouter>
+  );
 
   function addBook(title) {
-    console.log(`The Book ${title} was clicked`);
+    // console.log(`The Book ${title} was clicked`);
+    const newBooks = books.filter((book) => {
+      if (title === book.volumeInfo.title) {
+        return false;
+      }
+      return true;
+    });
+    setBooks(newBooks);
   }
-if (books.length ===0) {
-            return 'No books found';
-        }
-        // return (
-        //     <div>
-        //         <BookList books={books} addBook={addBook} />
-        //     </div>
-        // );
-        return (
-            <BrowserRouter>
-            <Route path='/' render=[() => (
-                </>
-            )
-            </BrowserRouter>
-        )
-  }
+  return <BookList addBook={addBook} books={books} />;
+};
 
-  export default App; 
+export default App;

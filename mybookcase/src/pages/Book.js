@@ -1,52 +1,61 @@
-import React from "react";
-import PropTypes from "prop-types";
+export default Book;
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button,Col, Row} from 'react-bootstrap'
+import './book.css'
 
 
-const Book = (props) => {
-  const {
-     volumeInfo: {
-        title,
-        authors, 
-        description, 
-        imageLinks: { thumbnail }
-       }
-     } = props.book;
-
-  const renderAmount = () => {
-    if (props.book.saleInfo && 
-      props.book.saleInfo.listPrice && 
-      props.book.saleInfo.listPrice.amount
-      ) {
-
-      return '£' + props.book.saleInfo.listPrice.amount;
+const Book = (props) => {    
+    
+    const {volumeInfo: {authors, title, description, imageLinks: {thumbnail}}} = props.book
+    const price = () => {
+        if(props.book.saleInfo.saleability === "FOR_SALE"){
+           return "£" + props.book.saleInfo.listPrice.amount
+        }else{
+          return  "No price"
+        }
     }
-    return "No price available";
-  };
+   
+ 
+       
+ return ( 
 
-  // const renderAuthors = () => {
-  //   if (authors.length === 1) {
-  //     return authors;
-  //   }
-  //   return authors.map(author => author + ', ');
-  // }
-
-  return (
-    <li className="book">
-    <img src={thumbnail} alt={title.length>0?title:`Book id=${id}`}/>
-    <div>
-      <h2 title={title}>
-        {title.length>50 ? title.substring(0,50)+"...":title}
-      </h2>
-      <p className="author">
-        by {authors?authors.join(', '):"No Authors Listed"}
-      </p>
-      <p className="price">{retailPrice?"£"+retailPrice.amount:"No Retail Price"}</p>
-      <p className="description">{description?description.substring(0,300)+"...":"No description"}</p>
-    </div>
-    <button className="addButton" onClick={() => addBook(title)}>Add +</button>
-    </li>
-    );
-};
+ <div>
+     <Row>
+     <Col>
+     <h2>{title}</h2>
+     <h6>by</h6>
+     <h4>{authors && authors.length === 1 ? authors[0] : authors.concat(",")}</h4>
+     <p className="description">{description}</p>
+     
+        </Col>
+        <Col className="ml-5 mt-5">
+        <img class="d-flex align-items-start flex-column mt-5 ml-5" src={thumbnail} alt={title}/>
+        <h2 className="mt-5 ml-5">{price()}</h2>
+        <Button variant="success" className="mt-5 ml-5" onClick = {()=> props.addBook(title)}>remove</Button>
+      </Col>
+     
+     </Row>
+ </div>
+ );
+}
 
 
+   Book.propTypes = {
+        volumeInfo: PropTypes.shape({title: PropTypes.string.isRequired}),
+        authors: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        listPrice: PropTypes.shape({amount: PropTypes.number.isRequired}),
+        imageLinks: PropTypes.shape({thumbnail: PropTypes.string.isRequired}),
+        
+   };
+   Book.defaultProps = { 
+       title: "No title…",
+       authors:"No authors",
+       description: "No description",
+       amount: "No amount",
+       thumbnail: "No image"
+    }
 export default Book;

@@ -2,22 +2,23 @@ import React, { useState } from "react";
 
 const Search = (props) => {
   const [keyword, setKeyword] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.findBooks(props.keyword);
+  };
+
   return (
-    <form>
-      <h1>{keyword && "Searching for keyword: " + keyword}</h1>
-      <label>
-        Name:
+    <div>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <h1>{keyword && "Searching for keyword: " + keyword}</h1>
         <input
           type="text"
-          value={keyword}
-          onChange={(e) => {
-            setKeyword(e.target.value);
-          }}
+          value={props.keyword}
+          onChange={(e) => props.setKeyword(e.target.value)}
         />
-      </label>
-      Submit:
-      <input type="submit" value="Submit" />
-    </form>
+        <input type="submit" value="Find" />
+      </form>
+    </div>
   );
 };
 
