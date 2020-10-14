@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../components/index';
+import App from './Components/index';
 import './App.css';
 
 ReactDOM.render(
@@ -12,4 +12,4 @@ ReactDOM.render(
 
 
 
-export default App;
+// export default App;
