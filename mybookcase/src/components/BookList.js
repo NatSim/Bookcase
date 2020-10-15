@@ -1,5 +1,5 @@
 import React from 'react';
-import Book from './Books';
+import Book from './Book';
 import {Row} from 'react-bootstrap'
 
 
@@ -11,4 +11,5 @@ const BookList = (props) => {
         </div>
     )
 }
+
 export default BookList

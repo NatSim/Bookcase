@@ -1,10 +1,8 @@
-export default Book;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button,Col, Row} from 'react-bootstrap'
-import './book.css'
+// import './book.css'
 
 
 const Book = (props) => {    
@@ -27,12 +25,15 @@ const Book = (props) => {
      <Col>
      <h2>{title}</h2>
      <h6>by</h6>
-     <h4>{authors && authors.length === 1 ? authors[0] : authors.concat(",")}</h4>
+
+     <h4>{authors && (authors.length === 1 ? authors[0] : authors.join(","))}</h4>
+     
+     
      <p className="description">{description}</p>
      
         </Col>
         <Col className="ml-5 mt-5">
-        <img class="d-flex align-items-start flex-column mt-5 ml-5" src={thumbnail} alt={title}/>
+        <img className="d-flex align-items-start flex-column mt-5 ml-5" src={thumbnail} alt={title}/>
         <h2 className="mt-5 ml-5">{price()}</h2>
         <Button variant="success" className="mt-5 ml-5" onClick = {()=> props.addBook(title)}>remove</Button>
       </Col>

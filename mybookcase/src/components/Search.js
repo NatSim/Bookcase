@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Search = (props) => {
-  const [keyword, setKeyword] = useState("");
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     props.findBooks(props.keyword);
@@ -10,7 +10,7 @@ const Search = (props) => {
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>{keyword && "Searching for keyword: " + keyword}</h1>
+        <h1>{props.keyword && "Searching for keyword: " + props.keyword}</h1>
         <input
           type="text"
           value={props.keyword}

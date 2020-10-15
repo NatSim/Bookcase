@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./Components/Header";
-import Search from "./Components/Search";
-import data from "./Models/books.json";
-import BookList from "./Components/BookList";
+import Header from "./../Components/Header";
+import Search from "./../Components/Search";
+import data from "./../Models/books.json";
+import BookList from "./../Components/BookList";
 
-const App = (props) => {                   //Functional Component JS
+//Functional Component JS
+const App = (props) => {                  
   const [books, setBooks] = useState(data);
   const [keyword, setKeyword] = useState("");
 
@@ -39,7 +40,7 @@ const App = (props) => {                   //Functional Component JS
   );
 
   function addBook(title) {
-    // console.log(`The Book ${title} was clicked`);
+    
     const newBooks = books.filter((book) => {
       if (title === book.volumeInfo.title) {
         return false;
