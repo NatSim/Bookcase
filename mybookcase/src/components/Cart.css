@@ -1,0 +1,12 @@
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  color: white;
+  background-color: darkgrey;
+}
+
+.shopping-cart {
+  position: relative;
+  background-color: crimson;
+}

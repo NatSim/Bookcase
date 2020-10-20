@@ -35,9 +35,8 @@ const Book = (props) => {
         <Col className="ml-5 mt-5">
         <img className="d-flex align-items-start flex-column mt-5 ml-5" src={thumbnail} alt={title}/>
         <h2 className="mt-5 ml-5">{price()}</h2>
-        <Button variant="success" className="mt-5 ml-5" onClick = {()=> props.addBook(title)}>remove</Button>
+        <Button variant="success" className="mt-5 ml-5" onClick = {()=> props.addBook(title)}>Add</Button>
       </Col>
-     
      </Row>
  </div>
  );

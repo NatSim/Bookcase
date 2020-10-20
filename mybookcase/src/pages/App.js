@@ -4,11 +4,14 @@ import Header from "./../Components/Header";
 import Search from "./../Components/Search";
 import data from "./../Models/books.json";
 import BookList from "./../Components/BookList";
+import Cart from "./../Components/Cart";
 
 //Functional Component JS
-const App = (props) => {                  
+const App = (props) => {
   const [books, setBooks] = useState(data);
   const [keyword, setKeyword] = useState("");
+  const [cart, setCart] = useState([]);
+
 
   async function findBooks(value) {
     const results = await fetch(
@@ -18,6 +21,22 @@ const App = (props) => {
       setBooks(results.items);
     }
   }
+
+  function addBook(title) {
+    console.log("addBook");
+    setCart((previousState)=>{
+      return previousState.concat(title)
+    })
+
+  //  const newBooks = books.filter((book) => {
+  //     if (title === book.volumeInfo.title) {
+  //       return false;
+  //     }
+  //     return true;
+  //   });
+  //   setBooks(newBooks);
+  }
+
   return (
     <BrowserRouter>
       <Route
@@ -25,6 +44,9 @@ const App = (props) => {
         path="/"
         render={() => (
           <React.Fragment>
+            <Cart
+              items={cart}
+            />
             <Header />
             <Search
               findBooks={findBooks}
@@ -38,18 +60,6 @@ const App = (props) => {
       <Route path="/bookcase" />
     </BrowserRouter>
   );
-
-  function addBook(title) {
-    
-    const newBooks = books.filter((book) => {
-      if (title === book.volumeInfo.title) {
-        return false;
-      }
-      return true;
-    });
-    setBooks(newBooks);
-  }
-  return <BookList addBook={addBook} books={books} />;
-};
+ };
 
 export default App;
