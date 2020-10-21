@@ -7,7 +7,6 @@
 
 .shopping-cart {
   position: relative;
-  background-color:#D6A184;
-  
- 
+  /* background-color: #d6a184; */
+  color: darksalmon;
 }
