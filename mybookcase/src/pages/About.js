@@ -1,5 +1,6 @@
 import React from "react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
+// import Link from "react-router-dom";
 import "./About.css";
 
 const About = () => {
@@ -12,7 +13,6 @@ const About = () => {
         bookcase. Click on the "Add+" button to add a book to your bookcase. Use
         the search bar to find the latest books by name, author or description.
       </p>
-      <Link to="/">Home</Link>
     </div>
   );
 };

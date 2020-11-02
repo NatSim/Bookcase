@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./../Components/Header";
 import Search from "./../Components/Search";
 import data from "./../Models/books.json";
 import BookList from "./../Components/BookList";
-import Cart from "./../Components/Cart";
+import About from "./../Pages/About";
+import Bookcase from "./../Components/Bookcase";
 
-//Functional Component JS
+
+
+
+
+//Functional BookList Component JS
 const App = (props) => {
-  const [books, setBooks] = useState(data);
+  const [bookListBooks, setBookListBooks] = useState(data); // data = [{ title, price, author }]
   const [keyword, setKeyword] = useState("");
-  const [cart, setCart] = useState([]);
+  const [bookcaseBooks, setBookcaseBooks] = useState([]);
 
 
   async function findBooks(value) {
@@ -18,46 +23,63 @@ const App = (props) => {
       `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`
     ).then((res) => res.json());
     if (!results.error) {
-      setBooks(results.items);
+      setBookListBooks(results.items);
     }
   }
 
-  function addBook(title) {
-    console.log("addBook");
-    setCart((previousState)=>{
-      return previousState.concat(title)
+  useEffect(() => {
+    document.title = bookcaseBooks.length + ' Books';
+  }, [bookcaseBooks]);
+
+  function addBook(book) {
+    // title =  "Queenie"
+    const titleExample = book.volumeInfo.title + ' x 1' + ' remove'
+    console.log(`The Book ${props.title} was clicked`);
+
+    setBookListBooks((previousState) => {
+      const newBooks = previousState.filter((bookObj) => bookObj.volumeInfo.title !== book.volumeInfo.title);
+      return newBooks;
     })
 
-  //  const newBooks = books.filter((book) => {
-  //     if (title === book.volumeInfo.title) {
-  //       return false;
-  //     }
-  //     return true;
-  //   });
-  //   setBooks(newBooks);
+    console.log("addBook");
+    setBookcaseBooks((previousState)=> {
+      return previousState.concat(book)
+    })
+  }
+
+  function removeBook(ClickOnbookObject) {
+    const titleExample2 = ClickOnbookObject.volumeInfo.title + ' -1' + 'add'
+    console.log(`The Book ${titleExample2} was clicked`);
+    const newBookCaseBooks = bookcaseBooks.filter((bookcaseBook) => bookcaseBook.id !== ClickOnbookObject.id);
+
+    setBookcaseBooks(() => newBookCaseBooks);
+
+  
+    // Create a new state?
+    //If remove button is clicked .pop(item) from bookcase
   }
 
   return (
     <BrowserRouter>
+      <Header />
       <Route
         exact
         path="/"
         render={() => (
           <React.Fragment>
-            <Cart
-              items={cart}
-            />
-            <Header />
             <Search
               findBooks={findBooks}
               keyword={keyword}
               setKeyword={setKeyword}
             />
-            <BookList books={books} addBook={addBook} />
+            <BookList books={bookListBooks} addBook={addBook} />
           </React.Fragment>
         )}
       />
-      <Route path="/bookcase" />
+      <Route path="/bookcase" render={() => (
+        <Bookcase books={bookcaseBooks} removeBook={removeBook}/>
+      )}/>
+      <Route path="/about" component={About} />
     </BrowserRouter>
   );
  };
