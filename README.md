@@ -16,9 +16,9 @@ This bookstore has many features which include:
 
 Before you continue, ensure you have met the following requirements:
 
-You have a basic understanding of JavaScript
-React Functional Components
-Props and State
+* You have a basic understanding of JavaScript
+* React Functional Components
+* Props and State
 
 <h3>Contributors</h3>
 
