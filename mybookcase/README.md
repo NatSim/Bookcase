@@ -1,6 +1,6 @@
 <h1>Ecommerce Bookstore</h1>
 
-Project name is an **ecommerce bookstore** that allows readers to find, collect and store their favourite books.
+Project name is **ecommerce bookstore** that allows readers to find, collect and store their favourite books.
  They can then use thebutton
 
 This bookstore has many features which include:
