@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./../Components/Header";
 import Search from "./../Components/Search";
@@ -6,17 +6,14 @@ import data from "./../Models/books.json";
 import BookList from "./../Components/BookList";
 import About from "./../Pages/About";
 import Bookcase from "./../Components/Bookcase";
-
-
-
-
+import "./App.css";
+import Banner from "../Components/Banner";
 
 //Functional BookList Component JS
 const App = (props) => {
   const [bookListBooks, setBookListBooks] = useState(data); // data = [{ title, price, author }]
   const [keyword, setKeyword] = useState("");
   const [bookcaseBooks, setBookcaseBooks] = useState([]);
-
 
   async function findBooks(value) {
     const results = await fetch(
@@ -28,33 +25,36 @@ const App = (props) => {
   }
 
   useEffect(() => {
-    document.title = bookcaseBooks.length + ' Books';
+    document.title = bookcaseBooks.length + " Books";
   }, [bookcaseBooks]);
 
   function addBook(book) {
     // title =  "Queenie"
-    const titleExample = book.volumeInfo.title + ' x 1' + ' remove'
+    const titleExample = book.volumeInfo.title + " x 1" + " remove";
     console.log(`The Book ${props.title} was clicked`);
 
     setBookListBooks((previousState) => {
-      const newBooks = previousState.filter((bookObj) => bookObj.volumeInfo.title !== book.volumeInfo.title);
+      const newBooks = previousState.filter(
+        (bookObj) => bookObj.volumeInfo.title !== book.volumeInfo.title
+      );
       return newBooks;
-    })
+    });
 
     console.log("addBook");
-    setBookcaseBooks((previousState)=> {
-      return previousState.concat(book)
-    })
+    setBookcaseBooks((previousState) => {
+      return previousState.concat(book);
+    });
   }
 
   function removeBook(ClickOnbookObject) {
-    const titleExample2 = ClickOnbookObject.volumeInfo.title + ' -1' + 'add'
+    const titleExample2 = ClickOnbookObject.volumeInfo.title + " -1" + "add";
     console.log(`The Book ${titleExample2} was clicked`);
-    const newBookCaseBooks = bookcaseBooks.filter((bookcaseBook) => bookcaseBook.id !== ClickOnbookObject.id);
+    const newBookCaseBooks = bookcaseBooks.filter(
+      (bookcaseBook) => bookcaseBook.id !== ClickOnbookObject.id
+    );
 
     setBookcaseBooks(() => newBookCaseBooks);
 
-  
     // Create a new state?
     //If remove button is clicked .pop(item) from bookcase
   }
@@ -72,16 +72,20 @@ const App = (props) => {
               keyword={keyword}
               setKeyword={setKeyword}
             />
+            <Banner />
             <BookList books={bookListBooks} addBook={addBook} />
           </React.Fragment>
         )}
       />
-      <Route path="/bookcase" render={() => (
-        <Bookcase books={bookcaseBooks} removeBook={removeBook}/>
-      )}/>
+      <Route
+        path="/bookcase"
+        render={() => (
+          <Bookcase books={bookcaseBooks} removeBook={removeBook} />
+        )}
+      />
       <Route path="/about" component={About} />
     </BrowserRouter>
   );
- };
+};
 
 export default App;
