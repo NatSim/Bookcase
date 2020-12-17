@@ -6,10 +6,26 @@ body {
   /* text-align: center; */
 }
 
+/*Header */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.content {
+  padding: 16px;
+}
+.sticky + .content {
+  padding-top: 102px;
+}
+
 .nav-links {
   min-height: 10vh;
   background: #80c078;
+  text-decoration: none;
 }
+
 li {
   color: #f0eff4;
 }
@@ -21,12 +37,10 @@ li {
   list-style: none;
 }
 
+/*Search Section*/
 .search-button {
+  /* display: inline-block; */
   float: right;
-  color: #f0eff4;
-  background-color: #336b75;
-  border: 2px solid #336b75;
-  padding: 5px 9px;
 }
 
 .search-bar {
@@ -39,19 +53,12 @@ li {
 .store-title {
   color: #ffe66d;
   font-family: "Prata", serif;
-  text-align: center;
 }
 
 .input-text {
-  position: relative;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding-right: 0;
-  border: 2px solid #336b75;
-  padding: 5px 9px;
+  float: left;
 }
 
-.banner-xmas {
-  padding-top: 20px;
-  padding-bottom: 20px;
+.store-title {
+  text-align: center;
 }
