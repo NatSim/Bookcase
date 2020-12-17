@@ -54,9 +54,6 @@ const App = (props) => {
     );
 
     setBookcaseBooks(() => newBookCaseBooks);
-
-    // Create a new state?
-    //If remove button is clicked .pop(item) from bookcase
   }
 
   return (
