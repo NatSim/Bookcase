@@ -7,6 +7,12 @@ const Search = (props) => {
     props.findBooks(props.keyword);
   };
 
+  // const FixButton = () => {
+  //   if (Search === true) {
+  //     "search-button".classList.add("fix-button");
+  //   }
+  // };
+
   return (
     <div>
       <div className="store-title">
