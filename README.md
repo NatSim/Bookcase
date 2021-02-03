@@ -3,7 +3,7 @@
 Project name is **bookcase** that allows readers to find, collect and store their favourite books.
 
 
-This bookstore uses React Framework has many features which include:
+This bookstore uses **React Framework** has many features which include:
 
 * **Multiple components** -which allow for Multiple pages/features. 
 * **Serachbar** - Users may search through the available BookList homepage or browse within the  to locate their desired books.
