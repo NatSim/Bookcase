@@ -16,7 +16,7 @@ const Search = (props) => {
   return (
     <div>
       <div className="store-title">
-        <h1>Online Book Store</h1>
+        <h1>Online Bookcase</h1>
       </div>
       <div className="search-bar">
         <form onSubmit={(e) => handleSubmit(e)}>
