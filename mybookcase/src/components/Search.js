@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/App.css";
+import "../pages/app.css";
 
 const Search = (props) => {
   const handleSubmit = (event) => {
