@@ -1,9 +1,9 @@
-<h1>Ecommerce Bookstore</h1>
+<h1>Bookcase</h1>
 
-Project name is **ecommerce bookstore** that allows readers to find, collect and store their favourite books.
- They can then use thebutton
+Project name is **Bookcase** that allows readers to find, collect and store their favourite books.
 
-This bookstore has many features which include:
+
+This bookcase uses **React Framework** has many features which include:
 
 * **Multiple components** -which allow for Multiple pages/features. 
 * **Serachbar** - Users may search through the available BookList homepage or browse within the  to locate their desired books.
@@ -83,7 +83,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 Before you continue, ensure you have met the following requirements:
 
-* You have a basic understanding of JavaScript
+* You have a basic understanding of React Framework/JavaScript
 * React Functional Components
 * Props and State
 
