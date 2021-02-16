@@ -1,6 +1,6 @@
 import React from "react";
-import Image1 from "../Components/images/Banner.jpeg";
-import Image2 from "../Components/images/Banner2.jpeg";
+import Image1 from "../components/images/banner.jpeg";
+import Image2 from "../components/images/banner2.jpeg";
 import "./Banner.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";

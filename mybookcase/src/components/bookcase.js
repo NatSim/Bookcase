@@ -1,6 +1,6 @@
 import React from "react";
-import Book from "./Book";
-import "./Cart.css";
+import Book from "./book";
+import "./cart.css";
 
 const Bookcase = (props) => {
   console.log(props.books);
