@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "../components/header";
 import Search from "../components/search";
 import data from "../models/books.json";
-import BookList from "../components/bookList";
+import BookList from "../components/booklist";
 import About from "./about";
 import Bookcase from "../components/bookcase";
 import "./app.css";
