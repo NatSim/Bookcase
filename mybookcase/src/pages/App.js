@@ -30,7 +30,7 @@ const App = (props) => {
 
   function addBook(book) {
     // title =  "Queenie"
-    const titleExample = book.volumeInfo.title + " x 1" + " remove";
+    // const titleExample = book.volumeInfo.title + " x 1" + " remove";
     console.log(`The Book ${props.title} was clicked`);
 
     setBookListBooks((previousState) => {

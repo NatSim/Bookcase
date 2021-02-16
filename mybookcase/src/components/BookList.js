@@ -1,6 +1,6 @@
-import React from 'react';
-import Book from './Book';
-import {Row} from 'react-bootstrap'
+import React from "react";
+import Book from "./Book";
+// import {Row} from 'react-bootstrap'
 
 /**
  * const props = {
@@ -10,12 +10,14 @@ import {Row} from 'react-bootstrap'
  **/
 
 const BookList = (props) => {
-    const { books, addBook } = props; // not required!!!
-    return(
-        <div>
-            {props.books.map(book => <Book key={book.id} book={book} addBook={props.addBook} bookList />)}
-        </div>
-    )
-}
+  //   const { books, addBook } = props; // not required!!!
+  return (
+    <div>
+      {props.books.map((book) => (
+        <Book key={book.id} book={book} addBook={props.addBook} bookList />
+      ))}
+    </div>
+  );
+};
 
-export default BookList
+export default BookList;
