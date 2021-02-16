@@ -47,8 +47,8 @@ const App = (props) => {
   }
 
   function removeBook(ClickOnbookObject) {
-    const titleExample2 = ClickOnbookObject.volumeInfo.title + (` -1` + `add`);
-    console.log(`The Book ${titleExample2} was clicked`);
+    // const titleExample2 = ClickOnbookObject.volumeInfo.title + (` -1` + `add`);
+    // console.log(`The Book ${titleExample2} was clicked`);
     const newBookCaseBooks = bookcaseBooks.filter(
       (bookcaseBook) => bookcaseBook.id !== ClickOnbookObject.id
     );
