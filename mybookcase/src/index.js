@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './Pages/App';
-import './Pages/App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./pages/app";
+import "./pages/app.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -9,7 +9,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-
 
 // export default App;

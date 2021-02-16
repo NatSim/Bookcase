@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Pages/App.css";
+import "../pages/app.css";
 
 const Header = () => {
   // When the user scrolls the page, execute myFunction
@@ -29,7 +29,7 @@ const Header = () => {
           <li>| Home |</li>
         </Link>
         <Link to="/bookcase" className="book-link link">
-          <li>| Bookcase |</li>
+          <li>| My Bookcase |</li>
         </Link>
         <Link to="/about" className="about-link link">
           <li>| About |</li>

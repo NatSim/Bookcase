@@ -74,3 +74,8 @@ li {
   float: left;
   border: 2px solid #336b75;
 }
+
+/*Book info*/
+div.col {
+  padding: 50px;
+}

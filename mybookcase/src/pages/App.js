@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./../Components/Header";
-import Search from "./../Components/Search";
-import data from "./../Models/books.json";
-import BookList from "./../Components/BookList";
-import About from "./../Pages/About";
-import Bookcase from "./../Components/Bookcase";
-import "./App.css";
+import Header from "../Components/Header";
+import Search from "../Components/Search";
+import data from "../Models/books.json";
+import BookList from "../Components/BookList";
+import About from "./about";
+import Bookcase from "../Components/Bookcase";
+import "./app.css";
 import Banner from "../Components/Banner";
 
 //Functional BookList Component JS
