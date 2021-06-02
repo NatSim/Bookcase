@@ -12,6 +12,15 @@ import ReactGa from "react-ga";
 
 //Functional BookList Component JS
 const App = (props) => {
+  //Google Analytics
+
+  useEffect(() => {
+    ReactGa.initialize("G-06V4XDPN2B");
+
+    //to report page view
+    ReactGa.pageview("/");
+  }, []);
+
   const [bookListBooks, setBookListBooks] = useState(data); // data = [{ title, price, author }]
   const [keyword, setKeyword] = useState("");
   const [bookcaseBooks, setBookcaseBooks] = useState([]);
@@ -24,14 +33,6 @@ const App = (props) => {
       setBookListBooks(results.items);
     }
   }
-
-  //Google Analytics
-  useEffect(() => {
-    ReactGa.initialize("G-06V4XDPN2B");
-
-    //to report page view
-    ReactGa.pageview("/");
-  }, []);
 
   useEffect(() => {
     document.title = bookcaseBooks.length + " Books";
@@ -68,6 +69,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Header />
+
       <Route
         exact
         path="/"
