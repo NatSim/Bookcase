@@ -8,6 +8,7 @@ import About from "./about";
 import Bookcase from "../components/bookcase";
 import "./app.css";
 import Banner from "../components/banner";
+import ReactGa from "react-ga";
 
 //Functional BookList Component JS
 const App = (props) => {
@@ -23,6 +24,14 @@ const App = (props) => {
       setBookListBooks(results.items);
     }
   }
+
+  //Google Analytics
+  useEffect(() => {
+    ReactGa.initialize("G-06V4XDPN2B");
+
+    //to report page view
+    ReactGa.pageview("/");
+  }, []);
 
   useEffect(() => {
     document.title = bookcaseBooks.length + " Books";
